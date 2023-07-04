@@ -39,7 +39,7 @@ class CustomBottomAppBar extends StatelessWidget {
                     children: const [
                       Icon(
                         Icons.mosque_outlined,
-                        color: Color(0xFF264653),
+                        color: Colors.grey,
                       ),
                     ],
                   ),
@@ -57,7 +57,7 @@ class CustomBottomAppBar extends StatelessWidget {
                     children: const [
                       Icon(
                         Icons.import_contacts_outlined,
-                        color: Color(0xFF264653),
+                        color: Colors.grey,
                       ),
                     ],
                   ),
@@ -71,7 +71,8 @@ class CustomBottomAppBar extends StatelessWidget {
                     children: const [
                       Icon(
                         Icons.settings_outlined,
-                        color: Color(0xFF264653),
+                        // color: Color(0xFF264653),
+                        color: Colors.grey,
                       ),
                     ],
                   ),

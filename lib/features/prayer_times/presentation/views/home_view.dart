@@ -1,10 +1,18 @@
 import 'package:al_noor/core/widgets/compass_floating_action_button.dart';
 import 'package:al_noor/core/widgets/custom_bottom_app_bar.dart';
+import 'package:al_noor/features/prayer_times/presentation/views/widgets/custom_progress_indicator.dart';
+import 'package:al_noor/features/prayer_times/presentation/views/widgets/greeting_widget.dart';
+import 'package:al_noor/features/prayer_times/presentation/views/widgets/prayer_times_section.dart';
 import 'package:flutter/material.dart';
 
-class HomeView extends StatelessWidget {
+class HomeView extends StatefulWidget {
   const HomeView({super.key});
 
+  @override
+  State<HomeView> createState() => _HomeViewState();
+}
+
+class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,17 +23,33 @@ class HomeView extends StatelessWidget {
         children: [
           Expanded(
             child: Container(
-              color: const Color(0xFFe9c46a),
-            ),
-          ),
-          Expanded(
-            flex: 2,
-            child: Container(
-              decoration: const BoxDecoration(
-                color: Colors.white,
+              width: double.infinity,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  fit: BoxFit.cover,
+                  image: const AssetImage('images/background.png'),
+                  colorFilter: ColorFilter.mode(
+                    Colors.black.withOpacity(0.3),
+                    BlendMode.darken,
+                  ),
+                ),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 24.0,
+                ),
+                child: SafeArea(
+                  child: Column(
+                    children: const [
+                      GreetingWidget(),
+                      CustomProgressIndicator(),
+                    ],
+                  ),
+                ),
               ),
             ),
           ),
+          const PrayerTimesSection(),
         ],
       ),
     );
