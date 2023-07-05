@@ -5,7 +5,7 @@ class PrayerTimesListView extends StatelessWidget {
   const PrayerTimesListView({super.key});
   final List<String> prayerTimesNames = const [
     'Fajr',
-    'Sunrise',
+    'sunrise',
     'Dhuhr',
     'Asr',
     'Maghrib',
@@ -15,34 +15,52 @@ class PrayerTimesListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 430,
+      height: 470,
       child: ListView.separated(
-        separatorBuilder: (context, index) => const Divider(),
+        physics: const NeverScrollableScrollPhysics(),
+        separatorBuilder: (context, index) => const Divider(
+          height: 4,
+        ),
         itemCount: 6,
         padding: EdgeInsets.zero,
         itemBuilder: (context, index) {
           return Padding(
             padding: const EdgeInsets.symmetric(
-              vertical: 8.0,
+              vertical: 0.0,
             ),
-            child: ListTile(
-              leading: Image(
-                image: AssetImage(
-                    "images/${prayerTimesNames[index].toLowerCase()}-light.png"),
-              ),
-              title: Text(
-                prayerTimesNames[index],
-                style: GoogleFonts.roboto(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600,
-                  color: Colors.grey,
+            child: Container(
+              // height: 60,
+              padding: EdgeInsets.zero,
+              // color: Colors.red,
+              child: ListTile(
+                leading: Container(
+                  padding: const EdgeInsets.all(8.0),
+                  decoration: BoxDecoration(
+                    color: const Color(0xFFe9c46a).withOpacity(0.2),
+                    border: Border.all(
+                      color: Colors.transparent,
+                    ),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: Image(
+                    image: AssetImage(
+                        "images/${prayerTimesNames[index].toLowerCase()}.png"),
+                  ),
                 ),
-              ),
-              trailing: Text(
-                '4:01 AM',
-                style: GoogleFonts.roboto(
-                  fontWeight: FontWeight.w600,
-                  color: Colors.grey,
+                title: Text(
+                  prayerTimesNames[index],
+                  style: GoogleFonts.roboto(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.black,
+                  ),
+                ),
+                subtitle: Text(
+                  '4:01 AM',
+                  style: GoogleFonts.roboto(
+                    fontWeight: FontWeight.w600,
+                    color: Colors.grey,
+                  ),
                 ),
               ),
             ),

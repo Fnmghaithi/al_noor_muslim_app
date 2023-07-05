@@ -27,7 +27,7 @@ class PrayerTimesSection extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(
                     vertical: 24.0,
-                    horizontal: 24.0,
+                    horizontal: 32.0,
                   ),
                   child: Column(
                     children: [
@@ -38,7 +38,7 @@ class PrayerTimesSection extends StatelessWidget {
                             style: GoogleFonts.roboto(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
-                              color: Colors.grey,
+                              color: Colors.grey[600],
                             ),
                           ),
                         ],

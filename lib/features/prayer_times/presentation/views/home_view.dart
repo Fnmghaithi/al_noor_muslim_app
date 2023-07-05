@@ -36,7 +36,7 @@ class _HomeViewState extends State<HomeView> {
               ),
               child: Padding(
                 padding: const EdgeInsets.symmetric(
-                  horizontal: 24.0,
+                  horizontal: 32.0,
                 ),
                 child: SafeArea(
                   child: Column(
