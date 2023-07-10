@@ -1,8 +1,26 @@
+import 'package:al_noor/core/bloc/bottom_navigation_bar_bloc.dart';
+import 'package:al_noor/core/widgets/custom_bottom_app_bar_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CustomBottomAppBar extends StatelessWidget {
-  const CustomBottomAppBar({super.key});
+  final int currentIndex;
 
+  CustomBottomAppBar({super.key, required this.currentIndex});
+
+  final List<IconData> unselectedIcons = [
+    Icons.dashboard_outlined,
+    Icons.mosque_outlined,
+    Icons.import_contacts_outlined,
+    Icons.settings_outlined,
+  ];
+
+  final List<IconData> selectedIcons = [
+    Icons.dashboard,
+    Icons.mosque,
+    Icons.import_contacts,
+    Icons.settings,
+  ];
   @override
   Widget build(BuildContext context) {
     return BottomAppBar(
@@ -14,68 +32,47 @@ class CustomBottomAppBar extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                MaterialButton(
-                  onPressed: () {},
-                  splashColor: Colors.transparent,
-                  highlightColor: Colors.transparent,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
-                      Icon(
-                        Icons.dashboard,
-                        color: Color(0xFFe9c46a),
-                      ),
-                    ],
-                  ),
+                CustomBottomAppBarButton(
+                  isSelected: currentIndex == 0,
+                  icon:
+                      currentIndex == 0 ? selectedIcons[0] : unselectedIcons[0],
+                  onPressed: () {
+                    BlocProvider.of<BottomNavigationBarBloc>(context)
+                        .add(IndexChangeEvent(index: 0));
+                  },
                 ),
-                MaterialButton(
-                  onPressed: () {},
-                  splashColor: Colors.transparent,
-                  highlightColor: Colors.transparent,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
-                      Icon(
-                        Icons.mosque_outlined,
-                        color: Colors.grey,
-                      ),
-                    ],
-                  ),
+                CustomBottomAppBarButton(
+                  isSelected: currentIndex == 1,
+                  icon:
+                      currentIndex == 1 ? selectedIcons[1] : unselectedIcons[1],
+                  onPressed: () {
+                    BlocProvider.of<BottomNavigationBarBloc>(context)
+                        .add(IndexChangeEvent(index: 1));
+                  },
                 ),
               ],
             ),
             Row(
               children: [
-                MaterialButton(
-                  onPressed: () {},
-                  splashColor: Colors.transparent,
-                  highlightColor: Colors.transparent,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
-                      Icon(
-                        Icons.import_contacts_outlined,
-                        color: Colors.grey,
-                      ),
-                    ],
-                  ),
+                CustomBottomAppBarButton(
+                  isSelected: currentIndex == 2,
+                  icon:
+                      currentIndex == 2 ? selectedIcons[2] : unselectedIcons[2],
+                  onPressed: () {
+                    BlocProvider.of<BottomNavigationBarBloc>(context)
+                        .add(IndexChangeEvent(index: 2));
+                  },
                 ),
-                MaterialButton(
-                  onPressed: () {},
-                  splashColor: Colors.transparent,
-                  highlightColor: Colors.transparent,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
-                      Icon(
-                        Icons.settings_outlined,
-                        // color: Color(0xFF264653),
-                        color: Colors.grey,
-                      ),
-                    ],
-                  ),
+                CustomBottomAppBarButton(
+                  isSelected: currentIndex == 3,
+                  icon:
+                      currentIndex == 3 ? selectedIcons[3] : unselectedIcons[3],
+                  onPressed: () {
+                    BlocProvider.of<BottomNavigationBarBloc>(context)
+                        .add(IndexChangeEvent(index: 3));
+                  },
                 ),
               ],
             ),

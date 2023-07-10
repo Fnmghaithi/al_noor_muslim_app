@@ -5,7 +5,7 @@ class PrayerTimesListView extends StatelessWidget {
   const PrayerTimesListView({super.key});
   final List<String> prayerTimesNames = const [
     'Fajr',
-    'sunrise',
+    'Sunrise',
     'Dhuhr',
     'Asr',
     'Maghrib',
@@ -14,8 +14,7 @@ class PrayerTimesListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 470,
+    return Expanded(
       child: ListView.separated(
         physics: const NeverScrollableScrollPhysics(),
         separatorBuilder: (context, index) => const Divider(

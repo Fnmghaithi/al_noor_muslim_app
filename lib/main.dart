@@ -1,4 +1,4 @@
-import 'package:al_noor/features/prayer_times/presentation/views/home_view.dart';
+import 'package:al_noor/home_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -19,7 +19,7 @@ class AlNoorApp extends StatelessWidget {
         primaryColor: const Color(0xFFe9c46a),
       ),
       debugShowCheckedModeBanner: false,
-      home: const HomeView(),
+      home: const HomePage(),
     );
   }
 }
