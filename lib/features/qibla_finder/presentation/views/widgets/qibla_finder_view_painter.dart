@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'dart:ui' as ui show Image;
 
 class QiblaFinderViewPainter extends CustomPainter {
   final Color color;
@@ -10,7 +11,7 @@ class QiblaFinderViewPainter extends CustomPainter {
 
   QiblaFinderViewPainter({
     required this.color,
-    this.majorTickerCount = 10,
+    this.majorTickerCount = 4,
     this.minorTickerCount = 90,
     this.cardinalityMap = const {0: 'N', 90: 'E', 180: 'S', 270: 'W'},
   });
@@ -18,12 +19,12 @@ class QiblaFinderViewPainter extends CustomPainter {
   late final majorScalePaint = Paint()
     ..style = PaintingStyle.stroke
     ..color = color
-    ..strokeWidth = 2.0;
+    ..strokeWidth = 4.0;
 
   late final minorScalePaint = Paint()
     ..style = PaintingStyle.stroke
-    ..color = color.withOpacity(0.7)
-    ..strokeWidth = 1.0;
+    ..color = const Color(0xFFe9c46a)
+    ..strokeWidth = 9.0;
 
   late final majorScaleStyle = TextStyle(
     color: color,
@@ -44,9 +45,9 @@ class QiblaFinderViewPainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     const origin = Offset.zero;
     final center = size.center(origin);
-    final radius = size.width / 3.5;
-    final majorTickLength = size.width * 0.08;
-    final minorTickLength = size.width * 0.055;
+    final radius = size.width / 2;
+    final majorTickLength = size.width * 0.17;
+    final minorTickLength = size.width * 0.1;
 
     canvas.save();
 
@@ -76,7 +77,7 @@ class QiblaFinderViewPainter extends CustomPainter {
       canvas.drawLine(center + tickStart, center + tickend, minorScalePaint);
     }
 
-    //paint angle degree
+    // paint angle degree
     for (final angle in _angleDegree) {
       final textPadding = majorTickLength - size.width * 0.02;
       final textPainter = TextSpan(
@@ -103,18 +104,16 @@ class QiblaFinderViewPainter extends CustomPainter {
           canvas, Offset(offset.dx - (textPainter.width / 2), offset.dy));
     }
 
-    //paint cardinality text
+    // paint cardinality text
     for (final cardinality in cardinalityMap.entries) {
-      final textPadding = majorTickLength - size.width * 0.01;
+      final textPadding = majorTickLength - size.width * 0.0002;
       final angle = cardinality.key.toDouble();
       final text = cardinality.value;
-      if (text == 'N') {
-        print('true');
-      }
+
       final textPainter = TextSpan(
         text: text,
         style: TextStyle(
-          color: text == 'N' ? Colors.red : Colors.black,
+          color: text == 'N' ? Colors.red : Colors.grey,
           fontSize: 20,
           fontWeight: FontWeight.bold,
         ),

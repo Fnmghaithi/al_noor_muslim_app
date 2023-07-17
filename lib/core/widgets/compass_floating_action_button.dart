@@ -18,7 +18,6 @@ class CompassFloatingActionButton extends StatelessWidget {
           builder: (BuildContext context) {
             return Container(
               decoration: BoxDecoration(
-                color: AppColor.primaryColor,
                 border: Border.all(
                   color: Colors.transparent,
                 ),
