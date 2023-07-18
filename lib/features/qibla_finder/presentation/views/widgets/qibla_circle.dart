@@ -4,9 +4,11 @@ import 'package:flutter/material.dart';
 
 class QiblaCircle extends StatelessWidget {
   final double heading;
+  final double qiblaDirection;
   const QiblaCircle({
     super.key,
     required this.heading,
+    required this.qiblaDirection,
   });
 
   @override
@@ -23,7 +25,7 @@ class QiblaCircle extends StatelessWidget {
         angle: -2 * pi * (heading / 360),
         child: Transform(
           alignment: FractionalOffset.center,
-          transform: Matrix4.rotationZ(262 * pi / 180),
+          transform: Matrix4.rotationZ(qiblaDirection * pi / 180),
           origin: Offset.zero,
           child: Align(
             alignment: Alignment.topCenter,
