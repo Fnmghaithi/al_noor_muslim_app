@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_compass/flutter_compass.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:vibration/vibration.dart';
 
 class QiblaFinderView extends StatefulWidget {
   const QiblaFinderView({super.key});
@@ -80,6 +81,10 @@ class _QiblaFinderViewState extends State<QiblaFinderView> {
           if (_qiblahDirection != null) {
             showCorrectQiblaDirectionMessage =
                 _heading.toInt() == _qiblahDirection!.toInt();
+          }
+
+          if (showCorrectQiblaDirectionMessage) {
+            Vibration.vibrate();
           }
 
           // _heading = 0;
